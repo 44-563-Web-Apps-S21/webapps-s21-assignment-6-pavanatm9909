@@ -5,51 +5,54 @@
  </head>
 <body>
 
-<h2>Hidden things by Atmakuri Pavan Kumar</h2>
+<h2>Pass phrase by Atmakuri Pavan Kumar</h2>
 <from>
-    <label for="form_secret">Enter the secret word</label>
-    <input type="password" value=Secret id="form_secret"><br><br>
+    <label for="form_secret">Enter the secret phrase</label>
+    <input type="password" value="Let me in" id="form_secret"><br><br>
 
-    <label for ="from_Guess">Enter a guess</label>
-    <input type="text" id="from_Guess"><br><br>
+    <label for ="from_phrase">Enter a phrase</label>
+    <input type="text" id="from_phrase"><br><br>
 
-    <input type="button" onclick="processGuess()" value="Check the guess">
+    <input type="button" onclick="processPhrase()" value="Check the phrase">
 </from>
 
-<p id="result">Guess result will display here</p>
+<p id="result">correct: 0 wrong: 0</p>
 <div class="container">
-    <img src="bearcat.jpg" id="result1" class="img-fluid" onclick="rotateImage()" alt="bearcat Image" height="200" width="200">
+    <img src="bearcat.jpg" id="result1" class="img-fluid" onclick="newImage()" alt="bearcat Image" height="200" width="200">
 </div>
 <script>
-    currentImage=0
-function processGuess(){
+    correct=0
+    wrong=0
+    currentImage=1
+function processPhrase(){
     console.log("Getting form values")
     secret=document.getElementById("form_secret").value
-    guess=document.getElementById("from_Guess").value
+    phrase=document.getElementById("from_phrase").value
     out = document.getElementById("result")
-    if(secret==guess)
+    if(secret==phrase)
     {
-        out.innerHTML="Correct guess"
-        alert("Congratulations")
+        correct=correct+1
+        alert("Access allowed")
     }
     else{
-        out.innerHTML="Wrong guess"
-        alert("Sorry")
+        wrong=wrong+1
+        alert("Access denied")
     }
+    out.innerHTML="correct: "+correct+"  wrong: "+wrong;
 
 }
-function rotateImage(){
+function newImage(){
     switch(currentImage){
-        case 0: document.getElementById("result1").src="peakcock.jpg";
+        case 1: document.getElementById("result1").src="peakcock.jpg";
                 currentImage=currentImage+1;
                 break;
-        case 1: document.getElementById("result1").src="Rabbit.jpg";
+        case 2: document.getElementById("result1").src="Rabbit.jpg";
                 currentImage=currentImage+1;
                 break;
-        case 2: document.getElementById("result1").src="bearcat.jpg";
-                currentImage=0;
+        case 3: document.getElementById("result1").src="bearcat.jpg";
+                currentImage=1;
                 break;
-        default: currentImage=0;
+        default: currentImage=1;
     }
 }
 </script>
